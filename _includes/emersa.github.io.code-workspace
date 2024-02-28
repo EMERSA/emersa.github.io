@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../editfiles"
+		},
+		{
+			"path": "../../webserver1"
+		},
+		{
+			"path": "../../2ws"
+		},
+		{
+			"path": "../../simpleapi"
+		},
+		{
+			"path": "../../membership1"
+		},
+		{
+			"path": "../../bemyfr1end.github.io"
+		},
+		{
+			"path": "../../my5tack.github.io"
+		}
+	],
+	"settings": {}
+}
