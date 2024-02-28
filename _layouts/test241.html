@@ -1157,6 +1157,11 @@ const analyser1 = new THREE.AudioAnalyser( sound, 32 );
 
 window.addEventListener( 'resize', onWindowResize );
 
+const canvas = document.querySelector('canvas');
+const followText = document.getElementById('infobox1');
+let boxPosition = new THREE.Vector3();
+let boxPositionOffset = new THREE.Vector3();
+const Y_AXIS = new Vector3(0, 1, 0);
 // stats
 //stats = new Stats();
 //container.appendChild( stats.dom );
@@ -1276,6 +1281,33 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 function animate() {
 
 requestAnimationFrame( animate );
+
+
+if (object) {
+        const time = Date.now() * 0.0005;
+        object.position.x = Math.sin(time * 0.75) * 2;
+        object.position.z = Math.cos(time * 0.75) * 2;
+
+        // MOVE TO THE RIGHT OF THE CAMERA
+        boxPositionOffset.copy(object.position);
+        boxPositionOffset.sub(camera.position);
+        boxPositionOffset.normalize();
+        boxPositionOffset.applyAxisAngle(Y_AXIS, - Math.PI / 2);
+        boxPositionOffset.multiplyScalar(0.5);
+        boxPositionOffset.y = 1.5;
+
+        boxPosition.setFromMatrixPosition( object.matrixWorld )
+        boxPosition.add(boxPositionOffset);
+        boxPosition.project(camera);
+        
+        var rect = canvas.getBoundingClientRect();
+        var widthHalf = canvas.width / 2, heightHalf = canvas.height / 2;
+        boxPosition.x = rect.left + ( boxPosition.x * widthHalf ) + widthHalf;
+        boxPosition.y = rect.top - ( boxPosition.y * heightHalf ) + heightHalf;
+        
+        followText.style.top = `${boxPosition.y}px`;
+        followText.style.left = `${boxPosition.x}px`;
+    }
 
 
 const delta = clock.getDelta();
