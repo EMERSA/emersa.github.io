@@ -129,6 +129,34 @@ color: #888;
   position: fixed;
   top: 0;
 }
+.infobox {
+      position: absolute;
+      z-index: 100;
+      border: 2px solid black;
+      background: #FCF0CC;
+      font-family: Arial;
+      font-weight: bold;
+      font-size: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .follow-box-headline {
+      border-bottom: 2px solid black;
+      padding-top: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .follow-box-row {
+      padding-top: 0.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-bottom: 0.5rem;
+    }
 </style>
 <div id="container">
 	
@@ -1264,11 +1292,11 @@ renderer.render( scene, camera );
 </script>
 
 <div style="display: none;" id="soundClips"></div>
-<div style="display: none;" id="infobox1">Info 1</div>
-<div style="display: none;" id="infobox2">Info 2</div>
-<div style="display: none;" id="infobox3">Info 3</div>
-<div style="display: none;" id="infobox4">Info 4</div>
-<div style="display: none;" id="infobox5">Info 5</div>
-<div style="display: none;" id="infobox6">Info 6</div>
+<div style="display: none;" class="infobox" id="infobox1">Info 1</div>
+<div style="display: none;" class="infobox" id="infobox2">Info 2</div>
+<div style="display: none;" class="infobox" id="infobox3">Info 3</div>
+<div style="display: none;" class="infobox" id="infobox4">Info 4</div>
+<div style="display: none;" class="infobox" id="infobox5">Info 5</div>
+<div style="display: none;" class="infobox" id="infobox6">Info 6</div>
 </body>
 </html>
