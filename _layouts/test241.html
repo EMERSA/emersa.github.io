@@ -194,7 +194,7 @@ color: #888;
 <script type="module">
 
 import * as THREE from 'three';
-
+import { Vector3 } from 'three';
 import Stats from 'three/addons/libs/stats.module.js';
 
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -1161,7 +1161,7 @@ const canvas = document.querySelector('canvas');
 const followText = document.getElementById('infobox1');
 let boxPosition = new THREE.Vector3();
 let boxPositionOffset = new THREE.Vector3();
-const Y_AXIS = new THREE.Vector3(0, 1, 0);
+const Y_AXIS = new Vector3(0, 1, 0);
 // stats
 //stats = new Stats();
 //container.appendChild( stats.dom );
@@ -1283,20 +1283,20 @@ function animate() {
 requestAnimationFrame( animate );
 
 
-if (object) {
+if (mesh) {
         const time = Date.now() * 0.0005;
-        object.position.x = Math.sin(time * 0.75) * 2;
-        object.position.z = Math.cos(time * 0.75) * 2;
+        mesh.position.x = Math.sin(time * 0.75) * 2;
+        mesh.position.z = Math.cos(time * 0.75) * 2;
 
         // MOVE TO THE RIGHT OF THE CAMERA
-        boxPositionOffset.copy(object.position);
+        boxPositionOffset.copy(mesh.position);
         boxPositionOffset.sub(camera.position);
         boxPositionOffset.normalize();
         boxPositionOffset.applyAxisAngle(Y_AXIS, - Math.PI / 2);
         boxPositionOffset.multiplyScalar(0.5);
         boxPositionOffset.y = 1.5;
 
-        boxPosition.setFromMatrixPosition( object.matrixWorld )
+        boxPosition.setFromMatrixPosition( mesh.matrixWorld )
         boxPosition.add(boxPositionOffset);
         boxPosition.project(camera);
         

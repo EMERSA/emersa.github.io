@@ -1,0 +1,386 @@
+<html>
+    <head>
+
+
+        <style>
+            html, body {
+          margin: 0;
+          height: 100%;
+        }
+        #c {
+          width: 100%;  /* let our container decide our size */
+          height: 100%;
+          display: block;
+        }
+        #container {
+          position: relative;  /* makes this the origin of its children */
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        #labels {
+          position: absolute;  /* let us position ourself inside the container */
+          left: 0;             /* make our position the top left of the container */
+          top: 0;
+          color: white;
+        }
+        #labels>div {
+          position: absolute;  /* let us position them inside the container */
+          left: 0;             /* make their default position the top left of the container */
+          top: 0;
+          cursor: pointer;     /* change the cursor to a hand when over us */
+          font-size: large;
+          user-select: none;   /* don't let the text get selected */
+          text-shadow:         /* create a black outline */
+          -1px -1px 0 #000,
+          0   -1px 0 #000,
+          1px -1px 0 #000,
+          1px  0   0 #000,
+          1px  1px 0 #000,
+          0    1px 0 #000,
+          -1px  1px 0 #000,
+          -1px  0   0 #000;
+        }
+        #labels>div:hover {
+          color: red;
+        }
+        #box1 {
+          position: absolute;  /* let us position ourself inside the container */
+          left: 0;             /* make our position the top left of the container */
+          top: 0;
+          color: white;
+        }
+        #box1>div {
+          position: absolute;  /* let us position them inside the container */
+          left: 0;             /* make their default position the top left of the container */
+          top: 0;
+          cursor: pointer;     /* change the cursor to a hand when over us */
+          font-size: large;
+          user-select: none;   /* don't let the text get selected */
+          text-shadow:         /* create a black outline */
+          -1px -1px 0 #000,
+          0   -1px 0 #000,
+          1px -1px 0 #000,
+          1px  0   0 #000,
+          1px  1px 0 #000,
+          0    1px 0 #000,
+          -1px  1px 0 #000,
+          -1px  0   0 #000;
+        }
+        #box1>div:hover {
+          color: red;
+        }
+        #box2 {
+          position: absolute;  /* let us position ourself inside the container */
+          left: 0;             /* make our position the top left of the container */
+          top: 0;
+          color: white;
+        }
+        #box2>div {
+          position: absolute;  /* let us position them inside the container */
+          left: 0;             /* make their default position the top left of the container */
+          top: 0;
+          cursor: pointer;     /* change the cursor to a hand when over us */
+          font-size: large;
+          user-select: none;   /* don't let the text get selected */
+          text-shadow:         /* create a black outline */
+          -1px -1px 0 #000,
+          0   -1px 0 #000,
+          1px -1px 0 #000,
+          1px  0   0 #000,
+          1px  1px 0 #000,
+          0    1px 0 #000,
+          -1px  1px 0 #000,
+          -1px  0   0 #000;
+        }
+        #box2>div:hover {
+          color: red;
+        }
+        #box3 {
+          position: absolute;  /* let us position ourself inside the container */
+          left: 0;             /* make our position the top left of the container */
+          top: 0;
+          color: white;
+        }
+        #box3>div {
+          position: absolute;  /* let us position them inside the container */
+          left: 0;             /* make their default position the top left of the container */
+          top: 0;
+          cursor: pointer;     /* change the cursor to a hand when over us */
+          font-size: large;
+          user-select: none;   /* don't let the text get selected */
+          text-shadow:         /* create a black outline */
+          -1px -1px 0 #000,
+          0   -1px 0 #000,
+          1px -1px 0 #000,
+          1px  0   0 #000,
+          1px  1px 0 #000,
+          0    1px 0 #000,
+          -1px  1px 0 #000,
+          -1px  0   0 #000;
+        }
+        #box3>div:hover {
+          color: red;
+        }  
+        #box4 {
+          position: absolute;  /* let us position ourself inside the container */
+          left: 0;             /* make our position the top left of the container */
+          top: 0;
+          color: white;
+        }
+        #box4>div {
+          position: absolute;  /* let us position them inside the container */
+          left: 0;             /* make their default position the top left of the container */
+          top: 0;
+          cursor: pointer;     /* change the cursor to a hand when over us */
+          font-size: large;
+          user-select: none;   /* don't let the text get selected */
+          text-shadow:         /* create a black outline */
+          -1px -1px 0 #000,
+          0   -1px 0 #000,
+          1px -1px 0 #000,
+          1px  0   0 #000,
+          1px  1px 0 #000,
+          0    1px 0 #000,
+          -1px  1px 0 #000,
+          -1px  0   0 #000;
+        }
+        #box4>div:hover {
+          color: red;
+        }
+        #box5 {
+          position: absolute;  /* let us position ourself inside the container */
+          left: 0;             /* make our position the top left of the container */
+          top: 0;
+          color: white;
+        }
+        #box5>div {
+          position: absolute;  /* let us position them inside the container */
+          left: 0;             /* make their default position the top left of the container */
+          top: 0;
+          cursor: pointer;     /* change the cursor to a hand when over us */
+          font-size: large;
+          user-select: none;   /* don't let the text get selected */
+          text-shadow:         /* create a black outline */
+          -1px -1px 0 #000,
+          0   -1px 0 #000,
+          1px -1px 0 #000,
+          1px  0   0 #000,
+          1px  1px 0 #000,
+          0    1px 0 #000,
+          -1px  1px 0 #000,
+          -1px  0   0 #000;
+        }
+        #box5>div:hover {
+          color: red;
+        }
+        
+        
+          </style>
+        
+
+    </head>
+    <body><div id="container">
+        <canvas id="c"></canvas>
+        <div id="labels"></div>
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+        <div id="box4"></div>
+        <div id="box5"></div>
+      </div>
+    <script  type="importmap">{
+      "imports": {
+          "three": "https://threejs.org/build/three.module.js",
+          "three/addons/": "https://threejs.org/examples/jsm/"
+      }
+  }</script>
+<script type="module">
+    // Three.js - Align HTML Elements w/hiding
+// from https://threejs.org/manual/examples/align-html-to-3d-w-hiding.html
+
+
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+function main() {
+
+	const canvas = document.querySelector( '#c' );
+	const renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
+
+	const fov = 75;
+	const aspect = 2; // the canvas default
+	const near = 1.1;
+	const far = 20;
+	const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+	camera.position.z = 7;
+
+	const controls = new OrbitControls( camera, canvas );
+	controls.target.set( 0, 0, 0 );
+	controls.update();
+
+	const scene = new THREE.Scene();
+
+	{
+
+		const color = 0xFFFFFF;
+		const intensity = 3;
+		const light = new THREE.DirectionalLight( color, intensity );
+		light.position.set( - 1, 2, 4 );
+		scene.add( light );
+
+	}
+
+	const boxWidth = 1;
+	const boxHeight = 1;
+	const boxDepth = 1;
+	const geometry = new THREE.BoxGeometry( boxWidth, boxHeight, boxDepth );
+
+	const labelContainerElem = document.querySelector( '#labels' );
+    const boxContainerElem = document.querySelector( '#box1' );
+    const box2ContainerElem = document.querySelector( '#box2' );
+    const box3ContainerElem = document.querySelector( '#box3' );
+    const box4ContainerElem = document.querySelector( '#box4' );
+    const box5ContainerElem = document.querySelector( '#box5' );
+
+	function makeInstance( geometry, color, x, name, box1, box2, box3, box4, box5) {
+
+		const material = new THREE.MeshPhongMaterial( { color } );
+
+		const cube = new THREE.Mesh( geometry, material );
+		scene.add( cube );
+
+		cube.position.x = x;
+
+		const elem = document.createElement( 'div' );
+		elem.textContent = name;
+		labelContainerElem.appendChild( elem );
+
+        const box01 = document.createElement( 'div' );
+		box01.textContent = box1;
+		boxContainerElem.appendChild( box01 );
+
+        const box02 = document.createElement( 'div' );
+		box02.textContent = box2;
+		box2ContainerElem.appendChild( box02 );
+
+        const box03 = document.createElement( 'div' );
+		box03.textContent = box3;
+		box3ContainerElem.appendChild( box03 );
+
+        const box04 = document.createElement( 'div' );
+		box04.textContent = box4;
+		box4ContainerElem.appendChild( box04 );
+
+        const box05 = document.createElement( 'div' );
+		box05.textContent = box3;
+		box5ContainerElem.appendChild( box05 );
+
+
+		return { cube, elem, box01, box02, box03, box04, box05 };
+
+	}
+
+	const cubes = [
+		makeInstance( geometry, 0x44aa88, 0, 'Aqua', `whats up`,`dude`,`mega`,`down`,`justin` ),
+		makeInstance( geometry, 0x8844aa, - 2, 'Purple' ),
+		makeInstance( geometry, 0xaa8844, 2, 'Gold' ),
+	];
+
+	function resizeRendererToDisplaySize( renderer ) {
+
+		const canvas = renderer.domElement;
+		const width = canvas.clientWidth;
+		const height = canvas.clientHeight;
+		const needResize = canvas.width !== width || canvas.height !== height;
+		if ( needResize ) {
+
+			renderer.setSize( width, height, false );
+
+		}
+
+		return needResize;
+
+	}
+
+	const tempV = new THREE.Vector3();
+	const raycaster = new THREE.Raycaster();
+
+	function render( time ) {
+
+		time *= 0.001;
+
+		if ( resizeRendererToDisplaySize( renderer ) ) {
+
+			const canvas = renderer.domElement;
+			camera.aspect = canvas.clientWidth / canvas.clientHeight;
+			camera.updateProjectionMatrix();
+
+		}
+
+		cubes.forEach( ( cubeInfo, ndx ) => {
+
+			const { cube, elem, box01, box02, box03, box04, box05 } = cubeInfo;
+			const speed = 1 + ndx * .1;
+			const rot = time * speed;
+			cube.rotation.x = rot;
+			cube.rotation.y = rot;
+
+			// get the position of the center of the cube
+			cube.updateWorldMatrix( true, false );
+			cube.getWorldPosition( tempV );
+
+			// get the normalized screen coordinate of that position
+			// x and y will be in the -1 to +1 range with x = -1 being
+			// on the left and y = -1 being on the bottom
+			tempV.project( camera );
+
+			// ask the raycaster for all the objects that intersect
+			// from the eye toward this object's position
+			raycaster.setFromCamera( tempV, camera );
+			const intersectedObjects = raycaster.intersectObjects( scene.children );
+			// We're visible if the first intersection is this object.
+			const show = intersectedObjects.length && cube === intersectedObjects[ 0 ].object;
+
+			if ( ! show || Math.abs( tempV.z ) > 1 ) {
+
+				// hide the label
+				elem.style.display = 'none';
+
+			} else {
+
+				// unhide the label
+				elem.style.display = '';
+
+				// convert the normalized position to CSS coordinates
+				const x = ( tempV.x * .5 + .5 ) * canvas.clientWidth;
+				const y = ( tempV.y * - .5 + .5 ) * canvas.clientHeight;
+
+				// move the elem to that position
+				elem.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
+                box01.style.transform = `translate(-190%, -190%) translate(${x}px,${y}px)`;
+                box02.style.transform = `translate(-290%, -290%) translate(${x}px,${y}px)`;
+                box03.style.transform = `translate(-290%, -290%) translate(${x}px,${y}px)`;
+                box04.style.transform = `translate(-290%, -290%) translate(${x}px,${y}px)`;
+                box05.style.transform = `translate(-290%, -290%) translate(${x}px,${y}px)`;
+
+
+			}
+
+		} );
+
+		renderer.render( scene, camera );
+
+		requestAnimationFrame( render );
+
+	}
+
+	requestAnimationFrame( render );
+
+}
+
+main();
+
+</script>
+</body>
+</html>
