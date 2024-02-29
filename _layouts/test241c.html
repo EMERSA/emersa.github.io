@@ -1482,6 +1482,16 @@ renderer.render( scene, camera );
 
 </script>
 
+<script src="/js/nipple.js"></script>
+<script>
+    var static = nipplejs.create({
+        zone: document.getElementById('joystickWrapper1'),
+        mode: 'static',
+        position: {left: '50%', top: '50%'},
+        color: 'red'
+    });
+</script>
+
 <div style="display: none;" id="soundClips"></div>
 <div style="display: none;" class="infobox" id="infobox1">Info 1</div>
 <div style="display: none;" class="infobox" id="infobox2">Info 2</div>
