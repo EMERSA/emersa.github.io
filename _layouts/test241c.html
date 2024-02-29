@@ -9,10 +9,6 @@
 <link type="text/css" rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/AssistBot.css" type="text/css">
 <style>
-$button-z: 0;
-$button-highlight: 1;
-$button-selection: 2;
-
 .pill-button {
   display: inline-block;
   position: relative;
@@ -22,41 +18,34 @@ $button-selection: 2;
   background: #2f8195;
   border-radius: 28px;
   color: #fff;
-  z-index: $button-z;
-
-  &-input {
-    display: none;
-    visibility: hidden;
-  }
-
-  &-highlight {
-    transform: translate(0,-50%);
-    transition: all 0.2s;
-    position: absolute;
-    top: 50%;
-    left: 4px;
-    height: 22px;
-    width: 70px;
-    background: #fff;
-    border-radius: 22px;
-    z-index: $button-highlight;
-  }
-
-  &-selection {
-    transition: all 0.2s;
-    display: inline-block;
-    position: relative;
-    padding: 0.4em 0.9em;
-    cursor: pointer;
-    z-index: $button-selection;
-
-    &_active {
-      // display: inline-block;
-      // background: #fff;
-      // border-radius: 22px;
-      color: #2f8195;
-    }
-  }
+  z-index: 0;
+}
+.pill-button-input {
+  display: none;
+  visibility: hidden;
+}
+.pill-button-highlight {
+  transform: translate(0, -50%);
+  transition: all 0.2s;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  height: 22px;
+  width: 70px;
+  background: #fff;
+  border-radius: 22px;
+  z-index: 1;
+}
+.pill-button-selection {
+  transition: all 0.2s;
+  display: inline-block;
+  position: relative;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
+  z-index: 2;
+}
+.pill-button-selection_active {
+  color: #2f8195;
 }
 body{font-family:Arial;font-size:14px;}
 @-webkit-keyframes loader {
