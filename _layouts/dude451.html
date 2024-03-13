@@ -138,39 +138,6 @@
   </head>
   
   <body translate="no">
-    <p>First thing first. A demo. Executed with this configuration : </p>
-  <div class="dynamic highlight highlight-javascript ">
-    <pre><span class="pl-k">&lt;</span>script src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>./dist/nipplejs.min.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;/</span>script<span class="pl-k">&gt;</span>
-  <span class="pl-k">&lt;</span>script<span class="pl-k">&gt;</span>
-      <span class="pl-k">var</span> dynamic <span class="pl-k">=</span> nipplejs.create({
-          zone: document.getElementById('dynamic'),
-          color: 'blue'
-      });
-  <span class="pl-k">&lt;/</span>script<span class="pl-k">&gt;</span></pre>
-  </div>
-  <div class="semi highlight highlight-javascript">
-    <pre><span class="pl-k">&lt;</span>script src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>./dist/nipplejs.min.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;/</span>script<span class="pl-k">&gt;</span>
-  <span class="pl-k">&lt;</span>script<span class="pl-k">&gt;</span>
-      <span class="pl-k">var</span> semi <span class="pl-k">=</span> nipplejs.create({
-          zone: document.getElementById('semi'),
-          mode: 'semi',
-          catchDistance: 150,
-          color: 'white'
-      });
-  <span class="pl-k">&lt;/</span>script<span class="pl-k">&gt;</span></pre>
-  </div>
-  <div class="static highlight highlight-javascript active">
-    <pre><span class="pl-k">&lt;</span>script src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>./dist/nipplejs.min.js<span class="pl-pds">"</span></span><span class="pl-k">&gt;&lt;/</span>script<span class="pl-k">&gt;</span>
-  <span class="pl-k">&lt;</span>script<span class="pl-k">&gt;</span>
-      <span class="pl-k">var</span> static <span class="pl-k">=</span> nipplejs.create({
-          zone: document.getElementById('static'),
-          mode: 'static',
-          position: {left: '50%', top: '50%'},
-          color: 'red'
-      });
-  <span class="pl-k">&lt;/</span>script<span class="pl-k">&gt;</span></pre>
-  </div>
-  <p>Choose the mode you want to test.</p>
   <div id="buttons">
     <div data-type="dynamic" class="button dynamic ">dynamic</div>
     <div data-type="semi" class="button semi">semi</div>
