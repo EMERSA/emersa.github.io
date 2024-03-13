@@ -1,0 +1,191 @@
+<header class="header  ">
+    <div class="top-bar">
+    <div class="container">
+    <div class="container-inner">
+    <div class="top-bar-wrap">
+    <div class="menu-top-bar-container"><ul id="menu-top-bar" class="menu">
+   <!-- <li id="menu-item-25727" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25727"><a href="/contact/">Contact</a></li>-->
+    <!-- <li id="menu-item-16923" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16923"><a href="/blog/">Blog</a></li>  -->
+    </ul></div> <button class="search">
+    <span class="light">
+    <img src="/media/search-icon-white.svg" />
+    </span>
+    <span class="dark">
+    <img src="/media/search-icon.svg" />
+    </span>
+    </button>
+    <div class="search-form">
+    <form autocomplete="off" method="get" action="https://emersa.io">
+    <fieldset>
+    <input type="search" name="s" placeholder="Search ..." value="" />
+    <button class="search" type="submit">
+    <span class="light">
+    <img class="icon-search" src="/media/search-icon-white.svg" />
+    <img class="icon-down" src="/media/navigation-close.svg" />
+    </span>
+    <span class="dark">
+    <img class="icon-search" src="/media/search-icon.svg" />
+    <img class="icon-down" src="/media/navigation-close-dark.svg" />
+    </span>
+    </button>
+    </fieldset>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="navigation">
+    <div class="container">
+    <div class="logo fadein animated">
+    <a href="/">
+    <img class="light" src=" {{ site.logosvg }}" />
+    <!--<img src=" {{ site.logosvg }}">  -->  <img src=" {{ site.logosvg }}" />
+    </a>
+    </div>
+    <div class="nav-holder">
+    <div class="nav-frame fadein animated delay-1s">
+    <div class="menu-overlay"></div>
+    <div class="menu-carbine-primary-container">
+    <ul id="menu-carbine-primary" class="menu">
+    <div class="marker"></div>
+    <div class="mega-wrap"><div class="mega-wrap-inner"></div></div>
+{% include menu2.html %}
+<!---->
+    </ul>
+    </div>
+    </div>
+    <div class="menu-toggle"><a href="#"><span></span></a></div>
+    </div>
+    
+
+
+     
+        <section class="login-section">
+            <a id="loginbutton5" class="demo fadein animated login-btn" href="/login/">Login</a>
+          </section>
+        
+          <!-- DASHBOARD SECTION -->
+          <section style="max-height: 21px;flex-wrap: wrap-reverse;" class="dashboard-section">
+            <a class="demo fadein animated logout-btn">🔐 Log out</a>&nbsp;<a href="{{ site.downloadlink }}" class="demo fadein animated">Demo</a>
+          </section>
+    <div class="nav-bg"></div>
+    <div class="nav-drawer">
+    <div class="upper">
+    <div class="logo fadein animated">
+    <a href="/">
+    <img class="light" src=" {{ site.logosvg }}" />
+    <img src=" {{ site.logosvg }}" />
+    </a>
+    </div>
+    <div class="toolbar">
+    <a class="back"><img src="/media/navigation-arrow-left.svg" /><span>Back</span></a>
+    <a class="close"><img src="/media/navigation-close.svg" /></a>
+    </div>
+    <div class="menu-wrapper">
+    <div class="menu-carbine-primary-container">
+    <ul id="menu-carbine-primary" class="menu">
+    <div class="marker"></div>
+    <div class="mega-wrap"><div class="mega-wrap-inner"></div></div>
+    {% include menu3.html %}
+    </ul>
+    </div>
+    </div>
+    </div>
+    <div class="lower">
+      <section class="login-section">
+        <a id="loginbutton2" class="demo fadein animated login-btn">Login</a>
+      </section>
+    
+      <!-- DASHBOARD SECTION -->
+      <section class="dashboard-section">
+        <a class="demo fadein animated logout-btn">🔐 Log out</a>
+      </section>
+    <div class="secondary-links">
+    <div class="menu-top-bar-container"><ul id="menu-top-bar-1" class="menu">
+    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25727"><a href="/contact/">Contact</a></li>
+    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16923"><a href="/blog/">Blog</a></li>
+    </ul></div><div class="menu-top-bar-container"><ul id="menu-top-bar-2" class="menu">
+    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25727"><a href="/contact/">Contact</a></li>
+    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16923"><a href="/blog/">Blog</a></li>
+    </ul></div> </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script>Navigation.start();</script>
+    </header>
+
+    <!--messager script-->
+    <div class="messager1">
+        <span id="choosea" style="/* align-items: center; */justify-content: center;/* display: block; */position: relative;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: stretch;align-items: stretch;width: 100%;">
+
+  <input type="checkbox" class="pill-button-input" checked="checked">
+<span class="pill-button">
+  <span class="pill-button-selection pill-button-selection_on pill-button-selection_active">Chatbox</span>
+  <span class="pill-button-selection pill-button-selection_off">Controller</span>
+  <span class="pill-button-highlight"></span>
+</span>
+            
+        </span>
+      <div id="body" style="width:1%;height:1%x;display: none;" class="card-body msg_card_body">
+        <script>
+              const image2a = `<img src="/media/d1.jpg" class="rounded-circle user_img_msg">`;
+      const image1a = `<div class="img_cont_msg">
+      <img src="/media/dude3.jpeg" class="rounded-circle user_img_msg">
+          </div>`;
+      </script>
+      <div id="data"></div>
+      <div style="display: none;" id="formats">Format: start recording to see sample rate</div>
+      <p style="display: none;"><strong>Recordings:</strong></p>
+      <ol style="display: none;" id="recordingsList"></ol>
+      
+      
+      <audio id="myAudio">
+      <source id="audio1" src="" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+      
+      
+      <div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">hi</div><div class="img_cont_msg">
+          <img src="/media/dude3.jpeg" class="rounded-circle user_img_msg">
+                  </div></div><div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="/media/d1.jpg" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">hello how can i help you</div></div></div>
+                  <div class="input-group" style="align-items: center; justify-content: center;">
+                    <div style="display: none;" class="input-group-append">
+                    <span style="display: none;" id="pauseButton" class="input-group-text attach_btn"><i class="fa fa-microphone-slash" aria-hidden="true"></i></span>
+                    
+                    </div>
+                    <input type="button" id="search-speech" style="width:30px; height: 100px;color: black; background: url('https://api.iconify.design/ph/microphone-fill.svg?height=24') center no-repeat; -webkit-appearance: button;cursor: pointer;" disabled/>
+                    
+                    <button class="record" id="recordButton" style="display:none ;height: 100px;color: black;"><i class="fas fa-microphone"></i></button>
+                    <button class="stop" id="stopButton" style="height: 100px;color: rgb(255, 0, 0);display: none;"><i class="fas fa-microphone"></i></button>
+                    <textarea style="width: 70%;/* margin-right: 20px; */height: 130px;" name="" id="userInput" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                    <button style="height: 100px;color: black;" id="playtrack"><i class="fas fa-location-arrow"></i></button>
+                    </div>
+                    <form style="display: none" id="search-form" onsubmit="return false;">
+                        <!-- (A) USUAL SEARCH FIELD & BUTTON -->
+                        <input type="text" id="search-field"/>
+                        
+                  
+                        <!-- (B) SPEECH SEARCH -->
+                      
+                      </form>
+      <div onclick="appear()" style="display: none; text-align: right">
+      <span class="circle_icon">
+        <img src="/media/messenger1.png">
+ </span>
+</div>
+    </div>
+    <div id="joystickWrapper1">
+
+    </div>
+<div id="chat3" class="disappear">
+
+  <section id="loading-screen">
+  
+    <div id="loader"></div>
+
+</section>
+{% include chatbotwithcolomn6.html %}
+</div>
+    <!--end of script-->
