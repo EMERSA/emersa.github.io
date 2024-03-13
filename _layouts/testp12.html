@@ -191,8 +191,8 @@
       </div>
     <script  type="importmap">{
       "imports": {
-          "three": "https://threejs.org/build/three.module.js",
-          "three/addons/": "https://threejs.org/examples/jsm/"
+          "three": "/build/three.module.js",
+          "three/addons/": "/jsm/"
       }
   }</script>
 <script type="module">
@@ -202,12 +202,17 @@
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { Vector3 } from 'three';
+import Stats from 'three/addons/libs/stats.module.js';
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 
 function main() {
 
 	const canvas = document.querySelector( '#c' );
 	const renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
 
+   
 	const fov = 75;
 	const aspect = 2; // the canvas default
 	const near = 1.1;
@@ -228,6 +233,8 @@ function main() {
 		const light = new THREE.DirectionalLight( color, intensity );
 		light.position.set( - 1, 2, 4 );
 		scene.add( light );
+      
+
 
 	}
 
@@ -237,7 +244,7 @@ function main() {
 	const geometry = new THREE.BoxGeometry( boxWidth, boxHeight, boxDepth );
 
 	const labelContainerElem = document.querySelector( '#labels' );
-    const boxContainerElem = document.querySelector( '#box1' );
+    const box1ContainerElem = document.querySelector( '#box1' );
     const box2ContainerElem = document.querySelector( '#box2' );
     const box3ContainerElem = document.querySelector( '#box3' );
     const box4ContainerElem = document.querySelector( '#box4' );
@@ -258,7 +265,7 @@ function main() {
 
         const box01 = document.createElement( 'div' );
 		box01.textContent = box1;
-		boxContainerElem.appendChild( box01 );
+		box1ContainerElem.appendChild( box01 );
 
         const box02 = document.createElement( 'div' );
 		box02.textContent = box2;
@@ -273,7 +280,7 @@ function main() {
 		box4ContainerElem.appendChild( box04 );
 
         const box05 = document.createElement( 'div' );
-		box05.textContent = box3;
+		box05.textContent = box5;
 		box5ContainerElem.appendChild( box05 );
 
 
@@ -355,17 +362,33 @@ function main() {
 				// convert the normalized position to CSS coordinates
 				const x = ( tempV.x * .5 + .5 ) * canvas.clientWidth;
 				const y = ( tempV.y * - .5 + .5 ) * canvas.clientHeight;
+                
+				const x1 = ( tempV.x * .6 + .6 ) * canvas.clientWidth;
+				const y1 = ( tempV.y * - .6 + .6 ) * canvas.clientHeight;
+
+                const x2 = ( tempV.x * .4 + .4 ) * canvas.clientWidth;
+				const y2 = ( tempV.y * - .4 + .4 ) * canvas.clientHeight;
+                
+                const x3 = ( tempV.x * .3 + .3 ) * canvas.clientWidth;
+				const y3 = ( tempV.y * - .3 + .3 ) * canvas.clientHeight;
+
+                const x4 = ( tempV.x * .2 + .2 ) * canvas.clientWidth;
+				const y4 = ( tempV.y * - .2 + .2 ) * canvas.clientHeight;
+
+                const x5 = ( tempV.x * .1 + .1 ) * canvas.clientWidth;
+				const y5 = ( tempV.y * - .1 + .1 ) * canvas.clientHeight;
 
 				// move the elem to that position
 				elem.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
-                box01.style.transform = `translate(-190%, -190%) translate(${x}px,${y}px)`;
-                box02.style.transform = `translate(-290%, -290%) translate(${x}px,${y}px)`;
-                box03.style.transform = `translate(-290%, -290%) translate(${x}px,${y}px)`;
-                box04.style.transform = `translate(-290%, -290%) translate(${x}px,${y}px)`;
-                box05.style.transform = `translate(-290%, -290%) translate(${x}px,${y}px)`;
+                box01.style.transform = `translate(-50%, -50%) translate(${x1}px,${y1}px)`;
+                box02.style.transform = `translate(-50%, -50%) translate(${x2}px,${y2}px)`;
+                box03.style.transform = `translate(-50%, -50%) translate(${x3}px,${y3}px)`;
+                box04.style.transform = `translate(-50%, -50%) translate(${x4}px,${y4}px)`;
+                box05.style.transform = `translate(-50%, -50%) translate(${x5}px,${y5}px)`;
 
 
 			}
+            
 
 		} );
 
