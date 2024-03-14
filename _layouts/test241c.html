@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/AssistBot.css" type="text/css">
 <style>
   #joystickWrapper1{
- /*   display: none;*/
+   display: none;
   }
 	   #mobileInterface {
   position: fixed;
@@ -328,7 +328,9 @@ $('.pill-button-selection').on('click', function () {
       pillButtonHighlight.css({
         'width': pillButtonOnTextWidth,
         'left': pillButtonOnTextPosition.left });
-
+        document.getElementById("joystickWrapper1").style.display="none";
+      document.getElementById("inputgroup1").style.display="inline";
+     
       console.log("Is Checked - ON");
     }
   }
