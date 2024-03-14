@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/AssistBot.css" type="text/css">
 <style>
   #joystickWrapper1{
-    display: none;
+ /*   display: none;*/
   }
 	   #mobileInterface {
   position: fixed;
@@ -319,6 +319,9 @@ $('.pill-button-selection').on('click', function () {
         'left': pillButtonOffTextPosition.left });
 
       console.log("Is Checked - OFF");
+      document.getElementById("joystickWrapper1").style.display="inline";
+      document.getElementById("inputgroup1").style.display="none";
+      console.log("fuck you");
     } else
     {
       pillButtonInput.prop('checked', true);
@@ -1490,7 +1493,7 @@ renderer.render( scene, camera );
     var static = nipplejs.create({
         zone: document.getElementById('joystickWrapper1'),
         mode: 'static',
-        position: {left: '50%', bottom: '10%'},
+        position: {left: '50%', top: '0%', position: 'relative', 'flex-wrap': 'wrap'},
         color: 'red'
     });
 </script>
