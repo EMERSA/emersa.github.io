@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/AssistBot.css" type="text/css">
 <style>
   #joystickWrapper1{
-  /* display: none; */
+    opacity: 0;
   }
 	   #mobileInterface {
   position: fixed;
@@ -319,7 +319,7 @@ $('.pill-button-selection').on('click', function () {
         'left': pillButtonOffTextPosition.left });
 
       console.log("Is Checked - OFF");
-      document.getElementById("joystickWrapper1").style.display="inline";
+      document.getElementById("joystickWrapper1").style.opacity=1;
       document.getElementById("inputgroup1").style.display="none";
       console.log("fuck you");
     } else
@@ -328,7 +328,7 @@ $('.pill-button-selection').on('click', function () {
       pillButtonHighlight.css({
         'width': pillButtonOnTextWidth,
         'left': pillButtonOnTextPosition.left });
-        document.getElementById("joystickWrapper1").style.display="none";
+        document.getElementById("joystickWrapper1").style.opacity=0;
       document.getElementById("inputgroup1").style.display="flex";
      
       console.log("Is Checked - ON");
@@ -1495,7 +1495,7 @@ renderer.render( scene, camera );
     var static = nipplejs.create({
         zone: document.getElementById('joystickWrapper1'),
         mode: 'static',
-        position: {left: '50%', top: '50%'},
+        position: {left: '50%', top: '90%'},
         color: 'red'
     });
 </script>
