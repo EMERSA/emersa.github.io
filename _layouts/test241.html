@@ -356,49 +356,7 @@ const headShake = mixer.clipAction( clips[ 2 ] );
 const agree = mixer.clipAction( clips[ 2 ] );
 const run = mixer.clipAction( clips[ 2 ] );
 
-function buttonFunction4() {
-//const action = mixer.clipAction( clips[ 2 ] );
-action1.play();
-}
-var params4 = {
-None: buttonFunction4
-};
 
-folder1.add(params4, 'None');
-
-function buttonFunction1() {
-//const action = mixer.clipAction( clips[ 2 ] );
-action1.play();
-}
-var params1 = {
-run: buttonFunction1
-};
-
-folder1.add(params1, 'run');
-
-function buttonFunction2() {
-action1.fadeOut (0.3);
-action1.stop(1);
-const action = mixer.clipAction( clips[ 2 ] );
-action2.play();
-}
-var params2 = {
-walk: buttonFunction2
-};
-
-folder1.add(params2, 'walk');
-
-function buttonFunction3() {
-action1.fadeOut (0.3);
-action1.stop(1);
-const action = mixer.clipAction( clips[ 2 ] );
-action2.play();
-}
-var params3 = {
-idle: buttonFunction3
-};
-
-folder1.add(params3, 'idle');
 
 // Update the mixer on each frame
 function update () {
