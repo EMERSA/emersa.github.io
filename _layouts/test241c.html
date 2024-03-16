@@ -1301,17 +1301,7 @@ mixer.timeScale = speed;
 
 
 const gui = new GUI()
-const folder1 = gui.addFolder('Base Actions');
-const folder2 = gui.addFolder( 'Additive Action Weights' );
-const folder3 = gui.addFolder( 'General Speed' );
-const cameraFolder = gui.addFolder('Camera');
-//folder2.add( 'dude', 0, 1);
-cameraFolder.add(camera.position, 'z', 0, 300);
-cameraFolder.add(camera.position, 'y', 0, 300);
-cameraFolder.add(camera.position, 'x', 0, 300);
 
-
-cameraFolder.open();
 panelSettings = {
 'modify time scale': 1.0
 };
@@ -1387,11 +1377,6 @@ settings.weight = weight;
 
 }
 */
-folder3.add( panelSettings, 'modify time scale', 0.0, 1.5, 0.01 ).onChange( modifyTimeScale );
-
-folder1.open();
-folder2.open();
-folder3.open();
 
 
 function onWindowResize() {
