@@ -37,8 +37,8 @@ class BasicCharacterController {
 
   _LoadModels() {
     const loader = new FBXLoader();
-    loader.setPath('./resources/zombie/');
-    loader.load('mremireh_o_desbiens.fbx', (fbx) => {
+    loader.setPath('./assets/glb/');
+    loader.load('dude45f.fbx', (fbx) => {
       fbx.scale.setScalar(0.1);
       fbx.traverse(c => {
         c.castShadow = true;
@@ -579,17 +579,7 @@ this._scene.add( grid );
       this._scene.add(fbx);
     });
   }
-/*
-  _LoadModel() {
-    const loader = new GLTFLoader();
-    loader.load('./resources/thing.glb', (gltf) => {
-      gltf.scene.traverse(c => {
-        c.castShadow = true;
-      });
-      this._scene.add(gltf.scene);
-    });
-  }
-*/
+
   _OnWindowResize() {
     this._camera.aspect = window.innerWidth / window.innerHeight;
     this._camera.updateProjectionMatrix();
