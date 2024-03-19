@@ -32,7 +32,7 @@ defaults:
 title: Emersa
 email: info@emersa.io
 description: >- # this means to ignore newlines until "baseurl:"
-   Looking for a 22nd century platform where you get to keep your data? An awesome website built by Kavarahu.
+   Looking for a 22nd century platform where you get to keep your data? An awesome website built by Justin Grierson.
 url: "https://emersa.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: emersaofficial
 github_username:  emersa
