@@ -533,7 +533,7 @@ grid.material.transparent = true;
 this._scene.add( grid );
     
     const plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(100, 100, 10, 10),
+        new THREE.PlaneGeometry( 2000, 2000, 10, 10),
         new THREE.MeshStandardMaterial({
             color: 0x808080,
           }));
