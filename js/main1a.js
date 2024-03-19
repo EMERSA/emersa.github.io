@@ -38,7 +38,7 @@ class BasicCharacterController {
     const loader = new FBXLoader();
     loader.setPath('/assets/glb/');
     loader.load('dude45g.fbx', (fbx) => {
-    //  fbx.scale.setScalar(0.1);
+      fbx.scale.setScalar(0.1);
       fbx.traverse(c => {
         c.castShadow = true;
       });
@@ -561,7 +561,7 @@ this._scene.add( grid );
     const loader = new FBXLoader();
     loader.setPath(path);
     loader.load(modelFile, (fbx) => {
-     // fbx.scale.setScalar(0.1);
+      fbx.scale.setScalar(0.1);
       fbx.traverse(c => {
         c.castShadow = true;
       });
