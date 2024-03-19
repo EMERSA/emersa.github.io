@@ -528,6 +528,11 @@ class CharacterControllerDemo {
     texture.encoding = THREE.sRGBEncoding;
     this._scene.background = texture;
 
+const grid = new THREE.GridHelper( 2000, 20, 0x000000, 0x000000 );
+grid.material.opacity = 0.2;
+grid.material.transparent = true;
+this._scene.add( grid );
+    
     const plane = new THREE.Mesh(
         new THREE.PlaneGeometry(100, 100, 10, 10),
         new THREE.MeshStandardMaterial({
