@@ -37,7 +37,7 @@ class BasicCharacterController {
 
   _LoadModels() {
     const loader = new FBXLoader();
-    loader.setPath('./assets/glb/');
+    loader.setPath('/assets/glb/');
     loader.load('dude45f.fbx', (fbx) => {
       fbx.scale.setScalar(0.1);
       fbx.traverse(c => {
