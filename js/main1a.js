@@ -475,27 +475,7 @@ class CharacterControllerDemo {
     this._threejs.setPixelRatio(window.devicePixelRatio);
     this._threejs.setSize(window.innerWidth, window.innerHeight);
 
-    const manager = new THREE.LoadingManager();
-manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
-	console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-  console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
-};
-
-manager.onLoad = function ( ) {
-	console.log( 'Loading complete!');
-	
-//document.getElementById('loader1').remove()
-	
-};
-
-manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-	console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-  console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
-};
-
-manager.onError = function ( url ) {
-	console.log( 'There was an error loading ' + url );
-};
+ 
 
     document.body.appendChild(this._threejs.domElement);
 
@@ -639,3 +619,25 @@ let _APP = null;
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new CharacterControllerDemo();
 });
+
+const manager = new THREE.LoadingManager();
+manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+	console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+  console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
+};
+
+manager.onLoad = function ( ) {
+	console.log( 'Loading complete!');
+	
+//document.getElementById('loader1').remove()
+	
+};
+
+manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+	console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+  console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
+};
+
+manager.onError = function ( url ) {
+	console.log( 'There was an error loading ' + url );
+};
