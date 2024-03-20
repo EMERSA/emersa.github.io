@@ -116,46 +116,46 @@ class BasicCharacterController {
           c.material[21] = hair01Material;
           console.log('working'); 
           }
-          if ( child.name == "Double_high"){
-            child.material[0] = scalpMaterial;
-            child.material[1] = hair02Material;
+          if ( c.name == "Double_high"){
+            c.material[0] = scalpMaterial;
+            c.material[1] = hair02Material;
             
             
             };
             
-            if ( child.name == "CC_Base_EyeOcclusion"){
-            child.material[0] = eyeROMaterial;
-            child.material[1] = eyeLOMaterial;
+            if ( c.name == "CC_Base_EyeOcclusion"){
+            c.material[0] = eyeROMaterial;
+            c.material[1] = eyeLOMaterial;
             
             };
             
-            if ( child.name == "CC_Base_Teeth"){
-            child.material[0] = upperMaterial;
-            child.material[1] = lowerMaterial;
+            if ( c.name == "CC_Base_Teeth"){
+            c.material[0] = upperMaterial;
+            c.material[1] = lowerMaterial;
             
             };
-            if ( child.name == "A7_0310001"){
-            child.material[0] = hairMaterial;
-            child.material[1] = hairMaterial;
+            if ( c.name == "A7_0310001"){
+            c.material[0] = hairMaterial;
+            c.material[1] = hairMaterial;
             };
-            if ( child.name == "A7_0310"){
-            child.material[0] = hairMaterial;
-            child.material[1] = hair01Material;
-            };
-            
-            if ( child.name ==  "CC_Base_Eye"){
-            child.material[0] = eyeRMaterial;
-            child.material[1] = corneaRMaterial;
-            child.material[2] = eyeLMaterial;
-            child.material[3] = corneaLMaterial;
+            if ( c.name == "A7_0310"){
+            c.material[0] = hairMaterial;
+            c.material[1] = hair01Material;
             };
             
-            if ( child.name == "CC_Base_TearLine"){
-            child.material[16] = tearRMaterial;
-            child.material[17] = tearLMaterial;
+            if ( c.name ==  "CC_Base_Eye"){
+            c.material[0] = eyeRMaterial;
+            c.material[1] = corneaRMaterial;
+            c.material[2] = eyeLMaterial;
+            c.material[3] = corneaLMaterial;
             };
-            if ( child.name == "CC_Base_Tongue"){
-            child.material[0] = tongueMaterial;
+            
+            if ( c.name == "CC_Base_TearLine"){
+            c.material[16] = tearRMaterial;
+            c.material[17] = tearLMaterial;
+            };
+            if ( c.name == "CC_Base_Tongue"){
+            c.material[0] = tongueMaterial;
             }
         }
 
