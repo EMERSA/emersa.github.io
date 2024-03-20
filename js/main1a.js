@@ -35,12 +35,88 @@ class BasicCharacterController {
   }
 
   _LoadModels() {
+
+    
+    var textureLoader = new THREE.TextureLoader();
+    var skirt = textureLoader.load('/assets/glb/textures/skirt.png');
+    var head = textureLoader.load('/assets/glb/textures/Std_Skin_Head_Diffuse.jpg');
+    var body = textureLoader.load('/assets/glb/textures/Std_Skin_Body_Diffuse.jpg');
+    var arm = textureLoader.load('/assets/glb/textures/Std_Skin_Arm_Diffuse.jpg');
+    var leg = textureLoader.load('/assets/glb/textures/Std_Skin_Leg_Diffuse.jpg');
+    var nails = textureLoader.load('/assets/glb/textures/Std_Nails_Diffuse.jpg');
+    var eyelash = textureLoader.load('/assets/glb/textures/Std_Eyelash_Diffuse.jpg');
+    var hair = textureLoader.load('/assets/glb/textures/Hair_Diffuse.png');
+    var tearR = textureLoader.load('/assets/glb/textures/Std_Tearline_R_Diffuse.jpg');
+    var tearL = textureLoader.load('/assets/glb/textures/Std_Tearline_L_Diffuse.jpg');
+    var tongue = textureLoader.load('/assets/glb/textures/Std_Tongue_Diffuse.png');
+    var upper = textureLoader.load('/assets/glb/textures/Std_Upper_Teeth_Diffuse.png');
+    var lower = textureLoader.load('/assets/glb/textures/Std_Lower_Teeth_Diffuse.png');
+    var hair01 = textureLoader.load('/assets/glb/textures/Hair_Diffuse_0001.png');
+    var corneaL = textureLoader.load('/assets/glb/textures/Std_Cornea_L_Diffuse.png');
+    var eyeL = textureLoader.load('/assets/glb/textures/Std_Eye_L_Diffuse.png');
+    var corneaR = textureLoader.load('/assets/glb/textures/Std_Cornea_R_Diffuse.png');
+    var eyeR = textureLoader.load('/assets/glb/textures/Std_Eye_R_Diffuse.png');
+    var eyeRO = textureLoader.load('/assets/glb/textures/Std_Eye_Occlusion_R_Diffuse.jpg');
+    var eyeLO = textureLoader.load('/assets/glb/textures/Std_Eye_Occlusion_L_Diffuse.jpg');
+    var hair02 = textureLoader.load('/assets/glb/textures/Hair_Transparency_Diffuse.png');
+    var scalp = textureLoader.load('/assets/glb/textures/Scalp_Transparency_Diffuse.jpg');
+    var hair02Material = new THREE.MeshPhongMaterial({map:hair02});
+    var eyeLOMaterial = new THREE.MeshPhongMaterial({map:eyeLO});
+    var eyeROMaterial = new THREE.MeshPhongMaterial({map:eyeRO});
+    var eyeLMaterial = new THREE.MeshPhongMaterial({map:eyeL});
+    var corneaLMaterial = new THREE.MeshPhongMaterial({map: corneaL});
+    var eyeRMaterial = new THREE.MeshPhongMaterial({map:eyeR});
+    var corneaRMaterial = new THREE.MeshPhongMaterial({map: corneaR});
+    var lowerMaterial = new THREE.MeshPhongMaterial({map: lower});
+    var upperMaterial = new THREE.MeshPhongMaterial({map: upper});
+    var tongueMaterial = new THREE.MeshPhongMaterial({map: tongue});
+    var skirtMaterial = new THREE.MeshPhongMaterial({map: skirt});
+    var tearLMaterial = new THREE.MeshPhongMaterial({map: tearL});
+    var tearRMaterial = new THREE.MeshPhongMaterial({map: tearR});
+    var bodyMaterial = new THREE.MeshPhongMaterial({map: body});
+    var headMaterial = new THREE.MeshPhongMaterial({map: head});
+    var armMaterial = new THREE.MeshPhongMaterial({map: arm});
+    var legMaterial = new THREE.MeshPhongMaterial({map: leg});
+    var nailMaterial = new THREE.MeshPhongMaterial({map: nails});
+    var eyelashMaterial = new THREE.MeshPhongMaterial({map: eyelash});
+    var hairMaterial = new THREE.MeshPhongMaterial({map: hair});
+    var hair01Material = new THREE.MeshPhongMaterial({map: hair01});
+    var scalpMaterial = new THREE.MeshPhongMaterial({map: scalp});
+
     const loader = new FBXLoader();
     loader.setPath('/assets/glb/');
     loader.load('dude45g.fbx', (fbx) => {
       fbx.scale.setScalar(0.1);
       fbx.traverse(c => {
         c.castShadow = true;
+
+        if ( c.isMesh ) {
+          if ( c.name == "CC_Base_Body"){
+          // c.material[0] = skirtMaterial;
+          // c.material[1] = scalpMaterial;
+          // c.material[2] = hair02Material;
+          // c.material[3] = eyeROMaterial;
+          // c.material[4] = eyeLOMaterial;
+          // c.material[5] = eyeRMaterial;
+          // c.material[6] = corneaRMaterial;
+          // c.material[7] = eyeLMaterial;
+          // c.material[8] = corneaLMaterial;
+          // c.material[9] = hairMaterial;
+          c.material[0] = headMaterial;
+          c.material[1] = bodyMaterial;
+          c.material[2] = armMaterial;
+          c.material[3] = legMaterial;
+          c.material[4] = nailMaterial;
+          c.material[5] = eyelashMaterial;
+          // c.material[16] = tearRMaterial;
+          // c.material[17] = tearLMaterial;
+          // c.material[18] = tongueMaterial;
+          // c.material[19] = upperMaterial;
+          //c.material[20] = lowerMaterial;
+          //c.material[21] = hair01Material;
+          console.log('working'); 
+          }}
+
       });
 
       this._target = fbx;
@@ -477,7 +553,7 @@ class CharacterControllerDemo {
 
  
 
-    document.body.appendChild(this._threejs.domElement);
+    document.body.appendc(this._threejs.domElement);
 
     window.addEventListener('resize', () => {
       this._OnWindowResize();
@@ -529,51 +605,6 @@ class CharacterControllerDemo {
     texture.encoding = THREE.sRGBEncoding;
     this._scene.background = texture;
 
-    var textureLoader = new THREE.TextureLoader();
-    var skirt = textureLoader.load('/assets/glb/textures/skirt.png');
-    var head = textureLoader.load('/assets/glb/textures/Std_Skin_Head_Diffuse.jpg');
-    var body = textureLoader.load('/assets/glb/textures/Std_Skin_Body_Diffuse.jpg');
-    var arm = textureLoader.load('/assets/glb/textures/Std_Skin_Arm_Diffuse.jpg');
-    var leg = textureLoader.load('/assets/glb/textures/Std_Skin_Leg_Diffuse.jpg');
-    var nails = textureLoader.load('/assets/glb/textures/Std_Nails_Diffuse.jpg');
-    var eyelash = textureLoader.load('/assets/glb/textures/Std_Eyelash_Diffuse.jpg');
-    var hair = textureLoader.load('/assets/glb/textures/Hair_Diffuse.png');
-    var tearR = textureLoader.load('/assets/glb/textures/Std_Tearline_R_Diffuse.jpg');
-    var tearL = textureLoader.load('/assets/glb/textures/Std_Tearline_L_Diffuse.jpg');
-    var tongue = textureLoader.load('/assets/glb/textures/Std_Tongue_Diffuse.png');
-    var upper = textureLoader.load('/assets/glb/textures/Std_Upper_Teeth_Diffuse.png');
-    var lower = textureLoader.load('/assets/glb/textures/Std_Lower_Teeth_Diffuse.png');
-    var hair01 = textureLoader.load('/assets/glb/textures/Hair_Diffuse_0001.png');
-    var corneaL = textureLoader.load('/assets/glb/textures/Std_Cornea_L_Diffuse.png');
-    var eyeL = textureLoader.load('/assets/glb/textures/Std_Eye_L_Diffuse.png');
-    var corneaR = textureLoader.load('/assets/glb/textures/Std_Cornea_R_Diffuse.png');
-    var eyeR = textureLoader.load('/assets/glb/textures/Std_Eye_R_Diffuse.png');
-    var eyeRO = textureLoader.load('/assets/glb/textures/Std_Eye_Occlusion_R_Diffuse.jpg');
-    var eyeLO = textureLoader.load('/assets/glb/textures/Std_Eye_Occlusion_L_Diffuse.jpg');
-    var hair02 = textureLoader.load('/assets/glb/textures/Hair_Transparency_Diffuse.png');
-    var scalp = textureLoader.load('/assets/glb/textures/Scalp_Transparency_Diffuse.jpg');
-    var hair02Material = new THREE.MeshPhongMaterial({map:hair02});
-    var eyeLOMaterial = new THREE.MeshPhongMaterial({map:eyeLO});
-    var eyeROMaterial = new THREE.MeshPhongMaterial({map:eyeRO});
-    var eyeLMaterial = new THREE.MeshPhongMaterial({map:eyeL});
-    var corneaLMaterial = new THREE.MeshPhongMaterial({map: corneaL});
-    var eyeRMaterial = new THREE.MeshPhongMaterial({map:eyeR});
-    var corneaRMaterial = new THREE.MeshPhongMaterial({map: corneaR});
-    var lowerMaterial = new THREE.MeshPhongMaterial({map: lower});
-    var upperMaterial = new THREE.MeshPhongMaterial({map: upper});
-    var tongueMaterial = new THREE.MeshPhongMaterial({map: tongue});
-    var skirtMaterial = new THREE.MeshPhongMaterial({map: skirt});
-    var tearLMaterial = new THREE.MeshPhongMaterial({map: tearL});
-    var tearRMaterial = new THREE.MeshPhongMaterial({map: tearR});
-    var bodyMaterial = new THREE.MeshPhongMaterial({map: body});
-    var headMaterial = new THREE.MeshPhongMaterial({map: head});
-    var armMaterial = new THREE.MeshPhongMaterial({map: arm});
-    var legMaterial = new THREE.MeshPhongMaterial({map: leg});
-    var nailMaterial = new THREE.MeshPhongMaterial({map: nails});
-    var eyelashMaterial = new THREE.MeshPhongMaterial({map: eyelash});
-    var hairMaterial = new THREE.MeshPhongMaterial({map: hair});
-    var hair01Material = new THREE.MeshPhongMaterial({map: hair01});
-    var scalpMaterial = new THREE.MeshPhongMaterial({map: scalp});
 
 const grid = new THREE.GridHelper( 2000, 20, 0x000000, 0x000000 );
 grid.material.opacity = 0.2;
