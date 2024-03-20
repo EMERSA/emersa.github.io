@@ -515,7 +515,288 @@ class CharacterControllerDemo {
       this._camera, this._threejs.domElement);
     controls.target.set(0, 10, 0);
     controls.update();
+//
 
+
+//webkitURL is deprecated but nevertheless
+URL = window.URL || window.webkitURL;
+
+var gumStream; 						//stream from getUserMedia()
+var rec; 							//Recorder.js object
+var input; 							//MediaStreamAudioSourceNode we'll be recording
+
+// shim for AudioContext when it's not avb. 
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioContext //audio context to help us record
+
+var recordButton = document.getElementById("recordButton");
+var stopButton = document.getElementById("stopButton");
+var pauseButton = document.getElementById("pauseButton");
+
+
+//add events to those 2 buttons
+recordButton.addEventListener("click", startRecording);
+
+stopButton.addEventListener("click", stopRecording);
+pauseButton.addEventListener("click", pauseRecording);
+
+var scrollTimer = -1;
+
+
+var voice = {
+  // (A) INIT SPEECH RECOGNITION
+  sform : null, // html search form
+  sfield : null, // html search field
+  sbtn : null, // html voice search button
+  recog : null, // speech recognition object
+  init : () => {
+    // (A1) GET HTML ELEMENTS
+    voice.sfrom = document.getElementById("search-form");
+    voice.sfield = document.getElementById("search-field");
+    voice.sbtn = document.getElementById("search-speech");
+ 
+    // (A2) GET MICROPHONE ACCESS
+    navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      // (A3) SPEECH RECOGNITION OBJECT + SETTINGS
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      voice.recog = new SpeechRecognition();
+      voice.recog.lang = "en-US";
+      voice.recog.continuous = false;
+      voice.recog.interimResults = false;
+ 
+      // (A4) POPUPLATE SEARCH FIELD ON SPEECH RECOGNITION
+      voice.recog.onresult = evt => {
+        let said = evt.results[0][0].transcript.toLowerCase();
+        voice.sfield.value = said;
+        
+        // voice.sform.submit();
+        // OR RUN AN AJAX/FETCH SEARCH
+        voice.stop();
+        console.log(said);
+        
+        const xhr = new XMLHttpRequest();
+xhr.open("GET", `https://apps.emersa.io:8082/dude123a/${said}`);
+xhr.send();
+xhr.responseType = "json";
+xhr.onload = () => {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    console.log(xhr.response);
+  //  console.log(xhr.response.traits.text[0].value);
+    var obj = xhr.response;
+		//console.log(JSON.stringify(obj.traits));
+    //    var objlength = JSON.stringify(obj.traits);
+    //  var obj = JSON.parse(this.responseText);
+console.log(obj);
+console.log(obj.textList);
+//console.log(JSON.stringify(obj.traits));
+var objlength = obj.textList;
+var obj1q = obj.textList;
+    /*    if (obj.filter(company => company.Name === 'Magenic').length ) {
+  console.log('I contain Magenic');
+}*/
+        var obj1q = JSON.stringify(xhr.response);
+        if (objlength.length < 1) {
+		var objecttext = "I'm sorry, but I didn't understand the question. Please try again";
+		console.log(objecttext+'dfgdfgdfgdfgdgdgdgdgf'); 
+        }else { var objecttext = obj.textList};
+        const listener = new THREE.AudioListener();
+		camera.add( listener );
+		const sound = new THREE.Audio( listener );
+		const audioLoader = new THREE.AudioLoader();
+		audioLoader.load( `https://apps.emersa.io:8081/?text=${objecttext}`, function( buffer ) {
+		sound.setBuffer( buffer );
+		sound.setLoop( false );
+		sound.setVolume( 1 );
+		sound.play();
+		const analyser1 = new THREE.AudioAnalyser( sound, 32 );
+		}); 
+  } else {
+    console.log(`Error: ${xhr.status}`);
+  }
+};
+
+
+      };
+ 
+      // (A5) ON SPEECH RECOGNITION ERROR
+      voice.recog.onerror = err => console.error(err);
+ 
+      // (A6) READY!
+      voice.sbtn.disabled = false;
+      voice.stop();
+    })
+    .catch(err => {
+      console.error(err);
+      voice.sbtn.value = "Please enable access and attach microphone.";
+    });
+  },
+ 
+  // (B) START SPEECH RECOGNITION
+  start : () => {
+    voice.recog.start();
+    voice.sbtn.onclick = voice.stop;
+    const sample = document.getElementById("search-speech");
+    sample.style.background = `url('https://api.iconify.design/ph/microphone-fill.svg?color=red&height=24') center no-repeat`; 
+    voice.sbtn.value = "";
+  },
+ 
+  // (C) STOP/CANCEL SPEECH RECOGNITION
+  stop : () => {
+    voice.recog.stop();
+    voice.sbtn.onclick = voice.start;
+    const sample = document.getElementById("search-speech");
+    sample.style.background = `url('https://api.iconify.design/ph/microphone-fill.svg?color=black&height=24') center no-repeat`; 
+    
+    voice.sbtn.value = "";
+  }
+};
+window.addEventListener("DOMContentLoaded", voice.init);
+
+
+
+//##
+
+
+//webkitURL is deprecated but nevertheless
+URL = window.URL || window.webkitURL;
+
+var gumStream; 						//stream from getUserMedia()
+var rec; 							//Recorder.js object
+var input; 							//MediaStreamAudioSourceNode we'll be recording
+
+// shim for AudioContext when it's not avb. 
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioContext //audio context to help us record
+
+var recordButton = document.getElementById("recordButton");
+var stopButton = document.getElementById("stopButton");
+var pauseButton = document.getElementById("pauseButton");
+
+
+//add events to those 2 buttons
+recordButton.addEventListener("click", startRecording);
+
+stopButton.addEventListener("click", stopRecording);
+pauseButton.addEventListener("click", pauseRecording);
+
+var scrollTimer = -1;
+
+
+var voice = {
+  // (A) INIT SPEECH RECOGNITION
+  sform : null, // html search form
+  sfield : null, // html search field
+  sbtn : null, // html voice search button
+  recog : null, // speech recognition object
+  init : () => {
+    // (A1) GET HTML ELEMENTS
+    voice.sfrom = document.getElementById("search-form");
+    voice.sfield = document.getElementById("search-field");
+    voice.sbtn = document.getElementById("search-speech");
+ 
+    // (A2) GET MICROPHONE ACCESS
+    navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      // (A3) SPEECH RECOGNITION OBJECT + SETTINGS
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      voice.recog = new SpeechRecognition();
+      voice.recog.lang = "en-US";
+      voice.recog.continuous = false;
+      voice.recog.interimResults = false;
+ 
+      // (A4) POPUPLATE SEARCH FIELD ON SPEECH RECOGNITION
+      voice.recog.onresult = evt => {
+        let said = evt.results[0][0].transcript.toLowerCase();
+        voice.sfield.value = said;
+        
+        // voice.sform.submit();
+        // OR RUN AN AJAX/FETCH SEARCH
+        voice.stop();
+        console.log(said);
+        
+        const xhr = new XMLHttpRequest();
+xhr.open("GET", `https://apps.emersa.io:8082/dude123a/${said}`);
+xhr.send();
+xhr.responseType = "json";
+xhr.onload = () => {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    console.log(xhr.response);
+  //  console.log(xhr.response.traits.text[0].value);
+    var obj = xhr.response;
+		//console.log(JSON.stringify(obj.traits));
+    //    var objlength = JSON.stringify(obj.traits);
+    //  var obj = JSON.parse(this.responseText);
+console.log(obj);
+console.log(obj.textList);
+//console.log(JSON.stringify(obj.traits));
+var objlength = obj.textList;
+var obj1q = obj.textList;
+    /*    if (obj.filter(company => company.Name === 'Magenic').length ) {
+  console.log('I contain Magenic');
+}*/
+        var obj1q = JSON.stringify(xhr.response);
+        if (objlength.length < 1) {
+		var objecttext = "I'm sorry, but I didn't understand the question. Please try again";
+		console.log(objecttext+'dfgdfgdfgdfgdgdgdgdgf'); 
+        }else { var objecttext = obj.textList};
+        const listener = new THREE.AudioListener();
+		camera.add( listener );
+		const sound = new THREE.Audio( listener );
+		const audioLoader = new THREE.AudioLoader();
+		audioLoader.load( `https://apps.emersa.io:8081/?text=${objecttext}`, function( buffer ) {
+		sound.setBuffer( buffer );
+		sound.setLoop( false );
+		sound.setVolume( 1 );
+		sound.play();
+		const analyser1 = new THREE.AudioAnalyser( sound, 32 );
+		}); 
+  } else {
+    console.log(`Error: ${xhr.status}`);
+  }
+};
+
+
+      };
+ 
+      // (A5) ON SPEECH RECOGNITION ERROR
+      voice.recog.onerror = err => console.error(err);
+ 
+      // (A6) READY!
+      voice.sbtn.disabled = false;
+      voice.stop();
+    })
+    .catch(err => {
+      console.error(err);
+      voice.sbtn.value = "Please enable access and attach microphone.";
+    });
+  },
+ 
+  // (B) START SPEECH RECOGNITION
+  start : () => {
+    voice.recog.start();
+    voice.sbtn.onclick = voice.stop;
+    const sample = document.getElementById("search-speech");
+    sample.style.background = `url('https://api.iconify.design/ph/microphone-fill.svg?color=red&height=24') center no-repeat`; 
+    voice.sbtn.value = "";
+  },
+ 
+  // (C) STOP/CANCEL SPEECH RECOGNITION
+  stop : () => {
+    voice.recog.stop();
+    voice.sbtn.onclick = voice.start;
+    const sample = document.getElementById("search-speech");
+    sample.style.background = `url('https://api.iconify.design/ph/microphone-fill.svg?color=black&height=24') center no-repeat`; 
+    
+    voice.sbtn.value = "";
+  }
+};
+window.addEventListener("DOMContentLoaded", voice.init);
+
+
+
+
+//####
     const loader = new THREE.CubeTextureLoader();
     const texture = loader.load([
         './resources/posx.jpg',
