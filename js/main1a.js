@@ -93,7 +93,7 @@ class BasicCharacterController {
         if ( c.isMesh ) {
           if ( c.name == "CC_Base_Body"){
           // c.material[0] = skirtMaterial;
-          // c.material[1] = scalpMaterial;
+           c.material[1] = scalpMaterial;
           // c.material[2] = hair02Material;
           // c.material[3] = eyeROMaterial;
           // c.material[4] = eyeLOMaterial;
