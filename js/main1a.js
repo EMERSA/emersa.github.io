@@ -199,6 +199,7 @@ class BasicCharacterController {
 	  //
       this._manager.onLoad = () => {
         this._stateMachine.SetState('idle');
+        document.getElementById('loader1').remove();
       };
 
       const _OnLoad = (animName, anim) => {
