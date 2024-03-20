@@ -89,7 +89,7 @@ class BasicCharacterController {
       fbx.scale.setScalar(0.1);
       fbx.traverse(c => {
         c.castShadow = true;
-/*
+
         if ( c.isMesh ) {
           if ( c.name == "CC_Base_Body"){
           // c.material[0] = skirtMaterial;
@@ -116,7 +116,7 @@ class BasicCharacterController {
           //c.material[21] = hair01Material;
           console.log('working'); 
           }}
-*/
+
       });
 
       this._target = fbx;
@@ -553,7 +553,7 @@ class CharacterControllerDemo {
 
  
 
-    document.body.appendc(this._threejs.domElement);
+    document.body.appendChild(this._threejs.domElement);
 
     window.addEventListener('resize', () => {
       this._OnWindowResize();
