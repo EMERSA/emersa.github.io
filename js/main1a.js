@@ -2,6 +2,8 @@ import * as THREE from 'three';
 
 import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import { Vector3 } from 'three';
+import Stats from 'three/addons/libs/stats.module.js';
 
 
 class BasicCharacterControllerProxy {
@@ -32,6 +34,29 @@ class BasicCharacterController {
         new BasicCharacterControllerProxy(this._animations));
 
     this._LoadModels();
+
+    const manager = new THREE.LoadingManager();
+    manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+      console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+      console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
+    };
+    
+    manager.onLoad = function ( ) {
+      console.log( 'Loading complete!');
+      
+    //document.getElementById('loader1').remove()
+      
+    };
+    
+    manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+      console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+      console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
+    };
+    
+    manager.onError = function ( url ) {
+      console.log( 'There was an error loading ' + url );
+    };
+
   }
 
   _LoadModels() {
@@ -738,25 +763,3 @@ let _APP = null;
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new CharacterControllerDemo();
 });
-
-const manager = new THREE.LoadingManager();
-manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
-	console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-  console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
-};
-
-manager.onLoad = function ( ) {
-	console.log( 'Loading complete!');
-	
-//document.getElementById('loader1').remove()
-	
-};
-
-manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-	console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-  console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
-};
-
-manager.onError = function ( url ) {
-	console.log( 'There was an error loading ' + url );
-};
