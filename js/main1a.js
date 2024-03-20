@@ -40,7 +40,7 @@ class BasicCharacterController {
   }
 
   _LoadModels() {
-
+    this._manager = new THREE.LoadingManager();
     
     var textureLoader = new THREE.TextureLoader(this._manager);
     var skirt = textureLoader.load('/assets/glb/textures/skirt.png');
@@ -171,7 +171,7 @@ class BasicCharacterController {
 
       this._mixer = new THREE.AnimationMixer(this._target);
 
-      this._manager = new THREE.LoadingManager();
+      
 	  //
 	  
 	    
