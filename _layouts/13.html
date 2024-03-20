@@ -161,10 +161,61 @@
     </div>
     <div id="info">
     
-    {% include header4c.html %}
+    {% include header4e.html %}
     </div>
     </head>
 <body>
+  <script id="rendered-js" >
+    let pillButtonOnText = $('.pill-button-selection_on'),
+    pillButtonOffText = $('.pill-button-selection_off'),
+    pillButtonHighlight = $('.pill-button-highlight'),
+    pillButtonOnTextWidth = pillButtonOnText.outerWidth(),
+    pillButtonOffTextWidth = pillButtonOffText.outerWidth(),
+    pillButtonOnTextPosition = pillButtonOnText.position(),
+    pillButtonOffTextPosition = pillButtonOffText.position(),
+    pillButtonInput = $('.pill-button-input');
+    
+    $('.pillButtonHighlight').css('width', pillButtonOnTextWidth);
+    
+    $('.pill-button-selection').on('click', function () {
+      if (!$(this).hasClass('pill-button-selection_active')) {
+        $('.pill-button-selection').removeClass('pill-button-selection_active');
+        $(this).addClass('pill-button-selection_active');
+    
+        if ($(this).hasClass('pill-button-selection_off') && pillButtonInput.prop('checked', true)) {
+          pillButtonInput.prop('checked', false);
+          pillButtonHighlight.css({
+            'width': pillButtonOffTextWidth,
+            'left': pillButtonOffTextPosition.left });
+    
+          console.log("Is Checked - OFF");
+          document.getElementById("joystickWrapper1").style.opacity=1;
+          document.getElementById("inputgroup1").style.display="none";
+          console.log("fuck you");
+        } else
+        {
+          pillButtonInput.prop('checked', true);
+          pillButtonHighlight.css({
+            'width': pillButtonOnTextWidth,
+            'left': pillButtonOnTextPosition.left });
+            document.getElementById("joystickWrapper1").style.opacity=0;
+          document.getElementById("inputgroup1").style.display="flex";
+         
+          console.log("Is Checked - ON");
+        }
+      }
+    });
+    
+    if (pillButtonInput.prop('checked', true)) {// default on cold start
+      console.log('is checked - cold start');
+      pillButtonHighlight.css('width', pillButtonOnTextWidth);
+    } else {
+      console.log('is not checked - cold start');
+      pillButtonHighlight.css('width', pillButtonOffTextWidth);
+    }
+    //# sourceURL=pen.js
+       
+    </script>
   <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 <script type="importmap">
 {
@@ -175,6 +226,15 @@
 }
 </script>
   <script src="/js/main1a.js" type="module">
+  </script>
+  <script src="/js/nipple.js"></script>
+  <script>
+      var static = nipplejs.create({
+          zone: document.getElementById('joystickWrapper1'),
+          mode: 'static',
+          position: {left: '50%', top: '90%'},
+          color: 'red'
+      });
   </script>
 </body>
 </html>
