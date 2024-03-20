@@ -7,6 +7,121 @@
     <link type="text/css" rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="/AssistBot.css" type="text/css">
     <style>
+     #joystickWrapper1{
+    opacity: 0;
+  }
+	   #mobileInterface {
+  position: fixed;
+  width: calc(100% - 20px);
+  height: 50vh;
+  pointer-events: none;
+  z-index: 11;
+  top: auto;
+  bottom: 120px;
+  left: 10px;
+  touch-action: manipulation;
+}
+#mobileInterface #joystickWrapper1 {
+  pointer-events: auto;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  width: 120px;
+  height: 120px;
+  z-index: 12;
+  touch-action: manipulation;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+#mobileInterface #joystickWrapper2 {
+  pointer-events: auto;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: auto;
+  background-color: transparent;
+  width: 50vw;
+  height: 140px;
+  z-index: 12;
+  touch-action: manipulation;
+  display: none;
+}
+#mobileInterface #joystickWrapper2 #jumpButton {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  touch-action: manipulation;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+#mobileInterface #joystickWrapper2 #jumpButton p {
+  position: relative;
+  display: inline-block;
+  color: white;
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 4px;
+  margin-left: 4px;
+}
+
+.noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+.pill-button {
+  display: inline-block;
+  position: relative;
+  padding: 3px 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  background: #2f8195;
+  border-radius: 28px;
+  color: #fff;
+  z-index: 0;
+}
+.pill-button-input {
+  display: none;
+  visibility: hidden;
+}
+.pill-button-highlight {
+  transform: translate(0, -50%);
+  transition: all 0.2s;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  height: 22px;
+  width: 70px;
+  background: #fff;
+  border-radius: 22px;
+  z-index: 1;
+}
+.pill-button-selection {
+  transition: all 0.2s;
+  display: inline-block;
+  position: relative;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
+  z-index: 2;
+}
+.pill-button-selection_active {
+  color: #2f8195;
+}
     body{font-family:Arial;font-size:14px;}
     @-webkit-keyframes loader {
       0% {
