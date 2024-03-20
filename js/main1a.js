@@ -35,27 +35,7 @@ class BasicCharacterController {
 
     this._LoadModels();
 
-    const manager = new THREE.LoadingManager();
-    manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
-      console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-      console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
-    };
-    
-    manager.onLoad = function ( ) {
-      console.log( 'Loading complete!');
-      
-    //document.getElementById('loader1').remove()
-      
-    };
-    
-    manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-      console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-      console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
-    };
-    
-    manager.onError = function ( url ) {
-      console.log( 'There was an error loading ' + url );
-    };
+ 
 
   }
 
@@ -192,6 +172,31 @@ class BasicCharacterController {
       this._mixer = new THREE.AnimationMixer(this._target);
 
       this._manager = new THREE.LoadingManager();
+	  //
+	  
+	    
+    this._manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+      console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+      console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
+    };
+    
+    this._manager.onLoad = function ( ) {
+      console.log( 'Loading complete!');
+      
+    //document.getElementById('loader1').remove()
+      
+    };
+    
+    this._manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+      console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+      console.log( `Started loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files. (${((itemsLoaded / itemsTotal) * 100).toFixed(2)}%)`);
+    };
+    
+    this._manager.onError = function ( url ) {
+      console.log( 'There was an error loading ' + url );
+    };
+	  
+	  //
       this._manager.onLoad = () => {
         this._stateMachine.SetState('idle');
       };
