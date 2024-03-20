@@ -92,30 +92,72 @@ class BasicCharacterController {
 
         if ( c.isMesh ) {
           if ( c.name == "CC_Base_Body"){
-          // c.material[0] = skirtMaterial;
+           c.material[0] = skirtMaterial;
            c.material[1] = scalpMaterial;
-          // c.material[2] = hair02Material;
-          // c.material[3] = eyeROMaterial;
-          // c.material[4] = eyeLOMaterial;
-          // c.material[5] = eyeRMaterial;
-          // c.material[6] = corneaRMaterial;
-          // c.material[7] = eyeLMaterial;
-          // c.material[8] = corneaLMaterial;
-          // c.material[9] = hairMaterial;
+           c.material[2] = hair02Material;
+           c.material[3] = eyeROMaterial;
+           c.material[4] = eyeLOMaterial;
+           c.material[5] = eyeRMaterial;
+           c.material[6] = corneaRMaterial;
+           c.material[7] = eyeLMaterial;
+           c.material[8] = corneaLMaterial;
+           c.material[9] = hairMaterial;
           c.material[0] = headMaterial;
           c.material[1] = bodyMaterial;
           c.material[2] = armMaterial;
           c.material[3] = legMaterial;
           c.material[4] = nailMaterial;
           c.material[5] = eyelashMaterial;
-          // c.material[16] = tearRMaterial;
-          // c.material[17] = tearLMaterial;
-          // c.material[18] = tongueMaterial;
-          // c.material[19] = upperMaterial;
-          //c.material[20] = lowerMaterial;
-          //c.material[21] = hair01Material;
+           c.material[16] = tearRMaterial;
+           c.material[17] = tearLMaterial;
+           c.material[18] = tongueMaterial;
+           c.material[19] = upperMaterial;
+          c.material[20] = lowerMaterial;
+          c.material[21] = hair01Material;
           console.log('working'); 
-          }}
+          }
+          if ( child.name == "Double_high"){
+            child.material[0] = scalpMaterial;
+            child.material[1] = hair02Material;
+            
+            
+            };
+            
+            if ( child.name == "CC_Base_EyeOcclusion"){
+            child.material[0] = eyeROMaterial;
+            child.material[1] = eyeLOMaterial;
+            
+            };
+            
+            if ( child.name == "CC_Base_Teeth"){
+            child.material[0] = upperMaterial;
+            child.material[1] = lowerMaterial;
+            
+            };
+            if ( child.name == "A7_0310001"){
+            child.material[0] = hairMaterial;
+            child.material[1] = hairMaterial;
+            };
+            if ( child.name == "A7_0310"){
+            child.material[0] = hairMaterial;
+            child.material[1] = hair01Material;
+            };
+            
+            if ( child.name ==  "CC_Base_Eye"){
+            child.material[0] = eyeRMaterial;
+            child.material[1] = corneaRMaterial;
+            child.material[2] = eyeLMaterial;
+            child.material[3] = corneaLMaterial;
+            };
+            
+            if ( child.name == "CC_Base_TearLine"){
+            child.material[16] = tearRMaterial;
+            child.material[17] = tearLMaterial;
+            };
+            if ( child.name == "CC_Base_Tongue"){
+            child.material[0] = tongueMaterial;
+            }
+        }
 
       });
 
