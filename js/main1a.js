@@ -42,7 +42,7 @@ class BasicCharacterController {
   _LoadModels() {
 
     
-    var textureLoader = new THREE.TextureLoader();
+    var textureLoader = new THREE.TextureLoader(this._manager);
     var skirt = textureLoader.load('/assets/glb/textures/skirt.png');
     var head = textureLoader.load('/assets/glb/textures/Std_Skin_Head_Diffuse.jpg');
     var body = textureLoader.load('/assets/glb/textures/Std_Skin_Body_Diffuse.jpg');
@@ -88,7 +88,7 @@ class BasicCharacterController {
     var hair01Material = new THREE.MeshPhongMaterial({map: hair01});
     var scalpMaterial = new THREE.MeshPhongMaterial({map: scalp});
 
-    const loader = new FBXLoader();
+    const loader = new FBXLoader(this._manager);
     loader.setPath('/assets/glb/');
     loader.load('dude45g.fbx', (fbx) => {
       fbx.scale.setScalar(0.1);
