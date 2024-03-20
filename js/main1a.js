@@ -183,7 +183,7 @@ class BasicCharacterController {
     this._manager.onLoad = function ( ) {
       console.log( 'Loading complete!');
       
-    //document.getElementById('loader1').remove()
+    document.getElementById('loader1').remove()
       
     };
     
