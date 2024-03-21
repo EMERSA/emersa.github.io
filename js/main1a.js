@@ -903,9 +903,15 @@ class BasicCharacterController {
       acc.multiplyScalar(2.0);
     }
 
-    if (this._stateMachine._currentState.Name == 'dance') {
-      acc.multiplyScalar(0.0);
+    try {
+      if (this._stateMachine._currentState.Name == 'dance') {
+        acc.multiplyScalar(0.0);
+      }
+    } catch (error) {
+      // Handle the error gracefully
+      console.error("An error occurred:", error.message);
     }
+
 
     if (this._input._keys.forward) {
       velocity.z += acc.z * timeInSeconds;
