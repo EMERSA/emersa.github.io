@@ -909,7 +909,8 @@ class BasicCharacterController {
       }
     } catch (error) {
       // Handle the error gracefully
-      console.error("An error occurred:", error.message);
+      console.log("An error occurred:");
+     // console.error("An error occurred:", error.message);
     }
 
 
