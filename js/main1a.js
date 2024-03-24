@@ -6,7 +6,7 @@ import { Vector3 } from 'three';
 import Stats from 'three/addons/libs/stats.module.js';
 //import { nipplejs } from "/js/nipplejs.min.js";
 init();
-addJoystick();
+
 
 let fwdValue = 0;
 let bkdValue = 0;
@@ -16,7 +16,7 @@ let tempVector = new THREE.Vector3();
 let upVector = new THREE.Vector3(0, 1, 0);
 let joyManager;
 
-
+addJoystick();
 function init() {
   
 
