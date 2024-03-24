@@ -4,7 +4,18 @@ import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import { Vector3 } from 'three';
 import Stats from 'three/addons/libs/stats.module.js';
+import { nipplejs } from "/js/nipplejs.min.js";
 init();
+addJoystick();
+
+let fwdValue = 0;
+let bkdValue = 0;
+let rgtValue = 0;
+let lftValue = 0;
+let tempVector = new THREE.Vector3();
+let upVector = new THREE.Vector3(0, 1, 0);
+let joyManager;
+
 
 function init() {
   
@@ -658,6 +669,88 @@ const analyser1 = new THREE.AudioAnalyser( sound, 32 );
 
 
 }
+
+
+function updatePlayer() {
+  // move the player
+  const angle = controls.getAzimuthalAngle();
+  console.log(`the current azimuth angle is ${angle}`);
+
+  if (fwdValue > 0) {
+    tempVector.set(0, 0, -fwdValue).applyAxisAngle(upVector, angle);
+    mesh.position.addScaledVector(tempVector, 2);
+  }
+
+  if (bkdValue > 0) {
+    tempVector.set(0, 0, bkdValue).applyAxisAngle(upVector, angle);
+    mesh.position.addScaledVector(tempVector, 1);
+  }
+
+  if (lftValue > 0) {
+    tempVector.set(-lftValue, 0, 0).applyAxisAngle(upVector, angle);
+    mesh.position.addScaledVector(tempVector, 1);
+  }
+
+  if (rgtValue > 0) {
+    tempVector.set(rgtValue, 0, 0).applyAxisAngle(upVector, angle);
+    mesh.position.addScaledVector(tempVector, 1);
+  }
+
+  mesh.updateMatrixWorld();
+
+  // controls.target.set(mesh.position.x, mesh.position.y, mesh.position.z);
+  // reposition camera
+  camera.position.sub(controls.target);
+  controls.target.copy(mesh.position);
+  // console.log(mesh.position);
+  camera.position.add(mesh.position.sub(new THREE.Vector3(0, 0, 0)));
+}
+
+function addJoystick() {
+  const options = {
+    zone: document.getElementById("joystickWrapper1"),
+    size: 120,
+    multitouch: true,
+    maxNumberOfNipples: 2,
+    mode: "static",
+    restJoystick: true,
+    shape: "circle",
+    // position: { top: 20, left: 20 },
+    position: { top: "60px", left: "60px" },
+    dynamicPage: true,
+  };
+
+  joyManager = nipplejs.create(options);
+
+  joyManager["0"].on("move", function (evt, data) {
+    const forward = data.vector.y;
+    const turn = data.vector.x;
+
+    if (forward > 0) {
+      fwdValue = Math.abs(forward);
+      bkdValue = 0;
+    } else if (forward < 0) {
+      fwdValue = 0;
+      bkdValue = Math.abs(forward);
+    }
+
+    if (turn > 0) {
+      lftValue = 0;
+      rgtValue = Math.abs(turn);
+    } else if (turn < 0) {
+      lftValue = Math.abs(turn);
+      rgtValue = 0;
+    }
+  });
+
+  joyManager["0"].on("end", function (evt) {
+    bkdValue = 0;
+    fwdValue = 0;
+    lftValue = 0;
+    rgtValue = 0;
+  });
+}
+
 
 class BasicCharacterControllerProxy {
   constructor(animations) {
@@ -1325,6 +1418,8 @@ class CharacterControllerDemo {
       this._camera, this._threejs.domElement);
     controls.target.set(0, 10, 0);
     controls.update();
+
+     updatePlayer();
 //
 
 
