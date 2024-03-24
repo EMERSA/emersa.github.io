@@ -4,7 +4,7 @@ import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import { Vector3 } from 'three';
 import Stats from 'three/addons/libs/stats.module.js';
-import { nipplejs } from "/js/nipplejs.min.js";
+import { nipplejs } from "/js/nipple.js";
 init();
 addJoystick();
 
