@@ -1419,6 +1419,22 @@ class CharacterControllerDemo {
     controls.target.set(0, 10, 0);
     controls.update();
 
+    controls.maxDistance = 100;
+    controls.minDistance = 100;
+    //controls.maxPolarAngle = (Math.PI / 4) * 3;
+    controls.maxPolarAngle = Math.PI / 2;
+    controls.minPolarAngle = 0;
+    controls.autoRotate = false;
+    controls.autoRotateSpeed = 0;
+    controls.rotateSpeed = 0.4;
+    controls.enableDamping = false;
+    controls.dampingFactor = 0.1;
+    controls.enableZoom = false;
+    controls.enablePan = false;
+    controls.minAzimuthAngle = -Math.PI / 2; // radians
+    controls.maxAzimuthAngle = Math.PI / 4; // radians
+
+
      updatePlayer();
 //
 
