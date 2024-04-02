@@ -8,7 +8,7 @@ init();
 
 function init() {
   
-
+let fbxModel;
 
 //webkitURL is deprecated but nevertheless
 URL = window.URL || window.webkitURL;
@@ -872,8 +872,11 @@ class BasicCharacterController {
       loader.load('idle.fbx', (a) => { _OnLoad('idle', a); });
       loader.load('dance.fbx', (a) => { _OnLoad('dance', a); });
     });
+    
   }
 
+
+  
   Update(timeInSeconds) {
     if (!this._target) {
       return;
@@ -1284,7 +1287,12 @@ class CharacterControllerDemo {
     this._threejs.setPixelRatio(window.devicePixelRatio);
     this._threejs.setSize(window.innerWidth, window.innerHeight);
 
- 
+    let joystickWrapper1 = nipplejs.create({
+      zone: document.getElementById('joystickWrapper1'),
+      mode: 'static',
+      position: { left: '50%', top: '90%' },
+      color: 'red'
+  });
 
     document.body.appendChild(this._threejs.domElement);
 
@@ -1362,6 +1370,31 @@ this._scene.add( grid );
 
     this._LoadAnimatedModel();
     this._RAF();
+    joystickWrapper1.on('move', function (fbxModel, event, data) {
+      if (!fbxModel) return; // If the model hasn't loaded yet, do nothing
+    console.log('im moving');
+    const angle = data.angle.radian;
+
+    // Create a quaternion for rotation around the Y-axis
+    const quaternion = new THREE.Quaternion();
+    quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), angle);
+    fbxModel.quaternion.copy(quaternion);
+      const forward = new THREE.Vector3(0, 0, 1);
+      forward.applyQuaternion(fbxModel.quaternion);
+      forward.normalize();
+    
+      // Adjust these values as needed
+      const speed = 0.1;
+      const direction = data.vector;
+    
+      // Move the model based on the joystick direction
+      fbxModel.position.addScaledVector(forward, direction * speed);
+      fbxModel.position.x += direction * speed;
+    });
+    
+    joystickWrapper1.on('end', function () {
+      // You can handle what happens when the joystick is released, if needed
+    });
   }
 
   _LoadAnimatedModel() {
@@ -1376,11 +1409,12 @@ this._scene.add( grid );
     const loader = new FBXLoader();
     loader.setPath(path);
     loader.load(modelFile, (fbx) => {
-      fbx.scale.setScalar(0.1);
-      fbx.traverse(c => {
+      fbxModel = fbx; 
+      fbxModel.scale.setScalar(0.1);
+      fbxModel.traverse(c => {
         c.castShadow = true;
       });
-      fbx.position.copy(offset);
+      fbxModel.position.copy(offset);
 
       const anim = new FBXLoader();
       anim.setPath(path);
@@ -1390,8 +1424,14 @@ this._scene.add( grid );
         const idle = m.clipAction(anim.animations[0]);
         idle.play();
       });
-      this._scene.add(fbx);
+      this._scene.add(fbxModel);
+     
     });
+    
+    // Listen to joystick events
+    joystick.on('move', function (evt, data) {
+      console.log('asdasdasdasd ')
+    })
   }
 
   _OnWindowResize() {
