@@ -319,12 +319,12 @@ scene.add(mesh);
 //scene.add(fbxModel);
 
 //var ground = new Object3D()
-let size_floor = 100;
-var geometry_floor = new THREE.BoxGeometry(size_floor, 0.25, size_floor);
+let size_floor = 600;
+var geometry_floor = new THREE.BoxGeometry(size_floor, 0, size_floor);
 var material_floor = new THREE.MeshNormalMaterial();
 
 var floor = new THREE.Mesh(geometry_floor, material_floor);
-floor.position.y = -5;
+floor.position.y = -1.5;
 floor.visible = true;
 //fbxModel.scale.setScalar(1);
 // ground.add(floor);
